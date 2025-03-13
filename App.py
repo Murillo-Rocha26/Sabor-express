@@ -19,7 +19,7 @@ def exibir_nome_do_programa():
 
 def exibir_programa():
     print("1. Cadastrar restaurante\n")
-    print("2. Listar restaurante\n")
+    print("2. Cadastrar produto\n")
     print("3. Ativar restaurante\n")
     print("4. Desativar restaurante\n")
     print("5. Sair\n")
@@ -49,16 +49,9 @@ def cadastrar_novo_restaurante():
     main()
 
 
-def listar_restaurante():
+def cadastrar_novo_produto():
     os.system('cls')
-    print("Liste o restaurante\n")
-    listar_restaurante = input("Listar restaurante: ")
-    if listar_restaurante in restaurantes:
-        print("Este restaurante já está listado.")
-    else:
-        restaurantes.append(listar_restaurante)
-        print(f"O restaurante {listar_restaurante} foi listado com sucesso!\n")
-
+    print("Cadastre novos produtos")
     produto_cadastrado = input("Cadastre o produto do restaurante listado: ")
     if produto_cadastrado in produtos:
         print("Este produto já está cadastrado.")
@@ -114,7 +107,7 @@ def escolher_opções():
         if opção_escolhida == 1:
             cadastrar_novo_restaurante()
         elif opção_escolhida == 2:
-            listar_restaurante()
+            cadastrar_novo_produto()
         elif opção_escolhida == 3:
             ativar_restaurante()
         elif opção_escolhida == 4:
