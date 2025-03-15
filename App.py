@@ -45,6 +45,9 @@ def cadastrar_novo_restaurante():
     else:
         restaurantes.append(nome_do_restaurante)
         print(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")
+    input("Cadastre o tipo de restaurante (ex: fast food, restaurante à la carte, self service):")
+    input("Descrição sobre o restaurante (como é o estilo de cozinha):")
+    input("Ponto de referência (Opcional):")
     input("Digite uma tecla para voltar ao menu principal: ")
     main()
 
