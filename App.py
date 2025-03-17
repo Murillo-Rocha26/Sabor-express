@@ -5,7 +5,7 @@ produtos = []
 
 
 def exibir_nome_do_programa():
-    print("""""
+    print("""
 ╭━━━╮╱╱╭╮╱╱╱╱╱╱╱╭━━━╮
 ┃╭━╮┃╱╱┃┃╱╱╱╱╱╱╱┃╭━━╯
 ┃╰━━┳━━┫╰━┳━━┳━╮┃╰━━┳╮╭┳━━┳━┳━━┳━━┳━━╮
@@ -31,7 +31,7 @@ def Encerrando_programa():
 
 
 def opção_invalida():
-    print("Opção inválida!\n")
+    print("Opção inválida! Tente novamente.\n")
     input("Digite uma tecla para voltar ao menu principal:")
     main()
 
@@ -42,6 +42,9 @@ def cadastrar_novo_restaurante():
     nome_do_restaurante = input("Nome do restaurante que deseja cadastrar-lo: ")
     if nome_do_restaurante in restaurantes:
         print("Este restaurante já foi cadastrado!\n")
+        input("Digite uma tecla para voltar ao menu principal: ")
+        main()
+
     else:
         restaurantes.append(nome_do_restaurante)
         print(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")
@@ -55,7 +58,7 @@ def cadastrar_novo_restaurante():
 def cadastrar_novo_produto():
     os.system('cls')
     print("Cadastre novos produtos")
-    produto_cadastrado = input("Cadastre o produto do restaurante listado: ")
+    produto_cadastrado = input("Cadastre o produto do restaurante: ")
     if produto_cadastrado in produtos:
         print("Este produto já está cadastrado.")
     else:
