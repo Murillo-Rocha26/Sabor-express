@@ -48,9 +48,9 @@ def cadastrar_novo_restaurante():
     else:
         restaurantes.append(nome_do_restaurante)
         print(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")
-    input("Cadastre o tipo de restaurante (ex: fast food, restaurante à la carte, self service):")
-    input("Descrição sobre o restaurante (como é o estilo de cozinha):")
-    input("Ponto de referência (Opcional):")
+    input("Cadastre o tipo de restaurante (ex: fast food, restaurante à la carte, self service): ")
+    input("Descrição sobre o restaurante (como é o estilo de cozinha): ")
+    input("Ponto de referência (Opcional): ")
     input("Digite uma tecla para voltar ao menu principal: ")
     main()
 
@@ -58,6 +58,32 @@ def cadastrar_novo_restaurante():
 def cadastrar_novo_produto():
     os.system('cls')
     print("Cadastre novos produtos")
+    produto_cadastrado = input("Cadastre o produto do restaurante: ")
+    
+    print('Escolha uma categoria para seu produto:')
+    print('1. Entradas: ')
+    print('2. Bebidas: ')
+    print('3. Pratos principais: ')
+    categoria = input('Digite o número da categoria: ')
+
+    categoria = {
+        '1:' 'Entradas',
+        '2:' 'Bebidas',
+        '3:' 'Pratos principais'
+    }
+    
+    categoria_nome = categoria.get(categoria)
+    if categoria_nome:
+        if categoria_nome not in produtos:
+            produtos[categoria_nome] = []
+        
+        produtos[categoria_nome].append(produto_cadastrado)
+        print("O {produto_cadastrado} foi cadastrado na categoria {categoria_nome} com sucesso!\n")
+    else:
+        print("Opção inválida!\n")
+    input("Digite uma tecla para voltar ao menu principal: ")
+    main()
+
     produto_cadastrado = input("Cadastre o produto do restaurante: ")
     if produto_cadastrado in produtos:
         print("Este produto já está cadastrado.")
