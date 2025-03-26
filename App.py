@@ -1,7 +1,7 @@
 import os
 
 restaurantes = []
-produtos = []
+produtos = {}
 
 
 def exibir_nome_do_programa():
@@ -59,7 +59,7 @@ def cadastrar_novo_produto():
     os.system('cls')
     print("Cadastre novos produtos")
     produto_cadastrado = input("Cadastre o produto do restaurante: ")
-    
+
     print('Escolha uma categoria para seu produto:')
     print('1. Entradas: ')
     print('2. Bebidas: ')
@@ -71,25 +71,16 @@ def cadastrar_novo_produto():
         '2:' 'Bebidas',
         '3:' 'Pratos principais'
     }
-    
+
     categoria_nome = categoria.get(categoria)
     if categoria_nome:
         if categoria_nome not in produtos:
             produtos[categoria_nome] = []
-        
         produtos[categoria_nome].append(produto_cadastrado)
-        print("O {produto_cadastrado} foi cadastrado na categoria {categoria_nome} com sucesso!\n")
+        print(f"O {produto_cadastrado} foi cadastrado na categoria {categoria_nome} com sucesso!\n")
     else:
         print("Opção inválida!\n")
-    input("Digite uma tecla para voltar ao menu principal: ")
-    main()
 
-    produto_cadastrado = input("Cadastre o produto do restaurante: ")
-    if produto_cadastrado in produtos:
-        print("Este produto já está cadastrado.")
-    else:
-        produtos.append(produto_cadastrado)
-        print(f"O produto {produto_cadastrado} foi cadastrado com sucesso!\n")
     input("Digite uma tecla para voltar ao menu principal: ")
     main()
 
@@ -124,7 +115,7 @@ def desativar_restaurante():
             restaurante_nome = restaurantes.pop(restaurantes_ativo - 1)
             print(f"O restaurante {restaurante_nome} foi desativado no sistema.")
         else:
-            print*("Opção de restaurante inválida!\n")
+            print("Opção de restaurante inválida!\n")
     except ValueError:
         print("Opção inválida\n")
     input("Digite uma tecla para voltar ao menu principal: ")
