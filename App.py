@@ -61,26 +61,29 @@ def cadastrar_novo_produto():
     produto_cadastrado = input("Cadastre o produto do restaurante: ")
 
     print('Escolha uma categoria para seu produto:')
-    print('1. Entradas: ')
-    print('2. Bebidas: ')
-    print('3. Pratos principais: ')
+    print('1. Entradas ')
+    print('2. Bebidas ')
+    print('3. Pratos principais ')
     categoria = input('Digite o número da categoria: ')
 
-    categoria = {
-        '1:' 'Entradas',
-        '2:' 'Bebidas',
-        '3:' 'Pratos principais'
+    categoria_dict = {
+        '1': 'Entradas',
+        '2': 'Bebidas',
+        '3': 'Pratos principais'
     }
 
-    categoria_nome = categoria.get(categoria)
+    categoria_nome = categoria_dict.get(categoria)
     if categoria_nome:
         if categoria_nome not in produtos:
             produtos[categoria_nome] = []
-        produtos[categoria_nome].append(produto_cadastrado)
-        print(f"O {produto_cadastrado} foi cadastrado na categoria {categoria_nome} com sucesso!\n")
+
+        if categoria_nome in produtos[categoria_nome]:
+            print("Este produto já está cadastrado na categoria!")
+        else:
+            produtos[categoria_nome].append(produto_cadastrado)
+            print(f"O {produto_cadastrado} foi cadastrado na categoria {categoria_nome} com sucesso!\n")
     else:
         print("Opção inválida!\n")
-
     input("Digite uma tecla para voltar ao menu principal: ")
     main()
 
