@@ -55,14 +55,29 @@ def opção_invalida():
 
 
 def cadastrar_novo_restaurante():
-    os.system('cls')
-    print("Cadastre novos restaurantes\n")
-    nome_do_restaurante = input("Nome do restaurante que deseja cadastrar-lo: ")
-    if nome_do_restaurante in restaurantes:
-        print("Este restaurante já foi cadastrado!\n")
-        input("Digite uma tecla para voltar ao menu principal: ")
-        main()
-
+    Layout = [
+        [sg.Text("Cadastre o restaurante: ")]
+        [sg.Text("Nome do restaurante: ", sg.InputText(key="Nome do restaurante:"))]
+        [sg.Button("Cancelar")]
+    ]
+     
+window = sg.Window = ("Cadastrar o restaurante", Layout)  
+        
+while True:
+    event, values = window.read()
+         
+    if event == sg.WINDOW_CLOSED or event == "Cancelar":
+        break
+    elif event == "Cadastrar o restaurante":
+        nome_do_restaurante == values["Cadastrar o restaurante: "]
+        if nome_restaurante in restaurantes:
+            sg.popup("Restaurante já cadastrado.")
+        else:
+            restaurantes.append(cadastrar_novo_restaurante)
+            sg.popup[(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")]
+      
+      
+         
     else:
         restaurantes.append(nome_do_restaurante)
         print(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")
