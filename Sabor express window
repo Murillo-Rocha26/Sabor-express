@@ -17,13 +17,14 @@ def exibir_nome_do_programa():
 
 
 def exibir_programa():
-Layout = [
+
+layout = [
         [sg.Text("Seja bem-vindo(a) Sabor Express", size=(25, 1), font=("Times New Roman", 16))]
         [sg.Button("Cadastrer restaurante"), sg.Button("Cadastrar produto"), sg.Button("Ativar restaurante"), sg.Button("Desativar restaurante"), sg.Button ("Sair")]
     ]
 
 
-window = sg.Window ("Exibir programa", Layout)
+window = sg.Window ("Exibir programa", layout)
 
 while True:
     event, values = window.read()
@@ -55,13 +56,13 @@ def opção_invalida():
 
 
 def cadastrar_novo_restaurante():
-    Layout = [
+ layout = [
         [sg.Text("Cadastre o restaurante: ")]
         [sg.Text("Nome do restaurante: ", sg.InputText(key="Nome do restaurante:"))]
         [sg.Button("Cancelar")]
     ]
      
-window = sg.Window = ("Cadastrar o restaurante", Layout)  
+window = sg.Window = ("Cadastrar o restaurante", layout)  
         
 while True:
     event, values = window.read()
