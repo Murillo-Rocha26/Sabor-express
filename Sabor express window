@@ -18,13 +18,14 @@ def exibir_nome_do_programa():
 
 def exibir_programa():
 
+
 layout = [
-        [sg.Text("Seja bem-vindo(a) Sabor Express", size=(25, 1), font=("Times New Roman", 16))]
-        [sg.Button("Cadastrer restaurante"), sg.Button("Cadastrar produto"), sg.Button("Ativar restaurante"), sg.Button("Desativar restaurante"), sg.Button ("Sair")]
+    [sg.Text("Seja bem-vindo(a) Sabor Express", size=(25, 1), font=("Times New Roman", 16))]
+    [sg.Button("Cadastrer restaurante"), sg.Button("Cadastrar produto"), sg.Button("Ativar restaurante"), sg.Button("Desativar restaurante"), sg.Button ("Sair")]
     ]
 
 
-window = sg.Window ("Exibir programa", layout)
+window = sg.Window ("Sabor Express", layout)
 
 while True:
     event, values = window.read()
@@ -56,11 +57,11 @@ def opção_invalida():
 
 
 def cadastrar_novo_restaurante():
- layout = [
+layout = [
         [sg.Text("Cadastre o restaurante: ")]
         [sg.Text("Nome do restaurante: ", sg.InputText(key="Nome do restaurante:"))]
         [sg.Button("Cancelar")]
-    ]
+]
      
 window = sg.Window = ("Cadastrar o restaurante", layout)  
         
@@ -77,16 +78,29 @@ while True:
             restaurantes.append(cadastrar_novo_restaurante)
             sg.popup[(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")]
       
-      
-         
-    else:
-        restaurantes.append(nome_do_restaurante)
-        print(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")
-    input("Cadastre o tipo de restaurante (ex: fast food, restaurante à la carte, self service): ")
-    input("Descrição sobre o restaurante (como é o estilo de cozinha): ")
-    input("Ponto de referência (Opcional): ")
-    input("Digite uma tecla para voltar ao menu principal: ")
-    main()
+layout = [
+    [sg.Text("Cadastre o tipo de restaurante (ex: fast food, restaurante à la carte, self service): "), sg.Text("Descrição sobre o restaurante (como é o estilo de cozinha): ")]
+    [sg.Text("Ponto de referência (opcional): ")]
+    [sg.InputText(key="Ponto_referencia")]
+    [sg.Button("Ok"), sg.Button("Cancelar")]
+]
+
+window = sg.window ("Ponto de referência", layout)
+
+while True:
+    event, values = window.read()
+    
+    if event == sg.WIN_CLOSED or event == "Cancelar":
+        break
+        
+    elif event == "Ok":
+        ponto_referencia == values["ponto_de_referencia"]
+        if ponto_de_referencia:
+            sg.poup(f"Ponto de referência fornecido: {ponto_de_referencia}")
+        else:
+            sg.poup("Nenhum ponto de referência foi fornecido.")
+
+    
 
 
 def cadastrar_novo_produto():
