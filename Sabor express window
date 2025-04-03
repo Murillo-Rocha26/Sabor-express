@@ -100,14 +100,30 @@ while True:
         else:
             sg.poup("Nenhum ponto de referência foi fornecido.")
 
+    window.close()
     
 
 
 def cadastrar_novo_produto():
-    os.system('cls')
-    print("Cadastre novos produtos")
-    produto_cadastrado = input("Cadastre o produto do restaurante: ")
+    layout = [
+    [sg.Text("Cadastre novo produto")]
+    [sg.InputText(key="Cadastre novo produto")]
+    [sg.Button("Cancelar"), sg.Button("Confirmar")
+    ]
 
+    window = sg.window("Cadastre novo produto", layout)
+    
+    while True:
+        event, values = window.read()
+        
+        if event == sg.WIND_CLOSED or event == "Cancelar":
+            break
+        elif event == "Confirmar":
+            cadastrar_novo_produto == values ["cadastrar_novo_produto"]
+            
+    
+    
+    
     print('Escolha uma categoria para seu produto:')
     print('1. Entradas ')
     print('2. Bebidas ')
