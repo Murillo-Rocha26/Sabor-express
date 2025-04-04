@@ -3,7 +3,7 @@ import PySimpleGUI as sg
 
 
 restaurantes = []
-produtos = {}
+produtos = []
 
 
 def exibir_nome_do_programa():
@@ -17,15 +17,14 @@ def exibir_nome_do_programa():
 
 
 def exibir_programa():
-
-
 layout = [
-    [sg.Text("Seja bem-vindo(a) Sabor Express", size=(25, 1), font=("Times New Roman", 16))]
-    [sg.Button("Cadastrer restaurante"), sg.Button("Cadastrar produto"), sg.Button("Ativar restaurante"), sg.Button("Desativar restaurante"), sg.Button ("Sair")]
+        [sg.Text("Seja bem-vindo(a) Sabor Express", size=(25, 1), font=("Times New Roman", 16))]
+        [sg.Button("Cadastrer restaurante"), sg.Button("Cadastrar produto"), sg.Button("Ativar restaurante"), sg.Button("Desativar restaurante"), sg.Button ("Sair")]
     ]
 
 
 window = sg.Window ("Sabor Express", layout)
+
 
 while True:
     event, values = window.read()
@@ -78,14 +77,14 @@ while True:
             restaurantes.append(cadastrar_novo_restaurante)
             sg.popup[(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")]
       
-layout = [
+    layout = [
     [sg.Text("Cadastre o tipo de restaurante (ex: fast food, restaurante à la carte, self service): "), sg.Text("Descrição sobre o restaurante (como é o estilo de cozinha): ")]
     [sg.Text("Ponto de referência (opcional): ")]
     [sg.InputText(key="Ponto_referencia")]
     [sg.Button("Ok"), sg.Button("Cancelar")]
 ]
 
-window = sg.window ("Ponto de referência", layout)
+    window = sg.window ("Ponto de referência", layout)
 
 while True:
     event, values = window.read()
@@ -106,11 +105,11 @@ while True:
 
 def cadastrar_novo_produto():
     layout = [
-    [sg.Text("Cadastre novo produto")]
-    [sg.InputText(key="Cadastre novo produto")]
-    [sg.Button("Cancelar"), sg.Button("Confirmar")
-    ]
-
+        [sg.Text("Cadastre novo produto")]
+        [sg.InputText(key="Cadastre novo produto")]
+        [sg.Button("Cancelar"), sg.Button("Confirmar")]
+]
+    
     window = sg.window("Cadastre novo produto", layout)
     
     while True:
@@ -121,35 +120,30 @@ def cadastrar_novo_produto():
         elif event == "Confirmar":
             cadastrar_novo_produto == values ["cadastrar_novo_produto"]
             
+    layout = [
+        [sg.Text("Escolha uma categoria para seu produto: ")]
+        [sg.Text("1. Entradas")]
+        [sg.Text("2. Bebidas")]
+        [sg.Text("3. Pratos principais")]
+        [sg.InputText(key="Escolha uma categoria para seu produto")]
+        [sg.Button("Confirmar"), sg.Button("Cancelar")]
+    ]
     
+    window = sg.window("Cadastre novo produto", layout)
     
-    
-    print('Escolha uma categoria para seu produto:')
-    print('1. Entradas ')
-    print('2. Bebidas ')
-    print('3. Pratos principais ')
-    categoria = input('Digite o número da categoria: ')
+    while True:
+        event, values  = window.read()
+        if event == sg.WINDOW_CLOSED or event == "Cancelar":
+            break   
+        elif event == "Cadastrar nova categoria: ":
+            cadastre_uma_nova_categoria == values ["cadastre_uma_nova_categoria"]
+            if cadastre_nova_categoria in produtos:
+                sg.poup("Categoria já registrada no produto")
+            else:
+                produtos.append(cadastrar_novo_produto)
+                sg.poup(f"Produto registrado na categoria selecionada com sucesso!")
 
-    categoria_dict = {
-        '1': 'Entradas',
-        '2': 'Bebidas',
-        '3': 'Pratos principais'
-    }
-
-    categoria_nome = categoria_dict.get(categoria)
-    if categoria_nome:
-        if categoria_nome not in produtos:
-            produtos[categoria_nome] = []
-
-        if categoria_nome in produtos[categoria_nome]:
-            print("Este produto já está cadastrado na categoria!")
-        else:
-            produtos[categoria_nome].append(produto_cadastrado)
-            print(f"O {produto_cadastrado} foi cadastrado na categoria {categoria_nome} com sucesso!\n")
-    else:
-        print("Opção inválida!\n")
-    input("Digite uma tecla para voltar ao menu principal: ")
-    main()
+    window.close()            
 
 
 def ativar_restaurante():
