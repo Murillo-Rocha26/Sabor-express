@@ -125,7 +125,7 @@ def cadastrar_novo_produto():
         [sg.Text("1. Entradas")]
         [sg.Text("2. Bebidas")]
         [sg.Text("3. Pratos principais")]
-        [sg.InputText(key="Escolha uma categoria para seu produto")]
+        [sg.InputText(key="Categoria")]
         [sg.Button("Confirmar"), sg.Button("Cancelar")]
     ]
     
@@ -135,13 +135,13 @@ def cadastrar_novo_produto():
         event, values  = window.read()
         if event == sg.WINDOW_CLOSED or event == "Cancelar":
             break   
-        elif event == "Cadastrar nova categoria: ":
-            cadastre_uma_nova_categoria == values ["cadastre_uma_nova_categoria"]
-            if cadastre_nova_categoria in produtos:
+        elif event == "Confirmar: ":
+            categoria == values ["Categoria"]
+            if categoria in produtos:
                 sg.poup("Categoria já registrada no produto")
             else:
                 produtos.append(cadastrar_novo_produto)
-                sg.poup(f"Produto registrado na categoria selecionada com sucesso!")
+                sg.poup(f"Produto registrado na categoria {categoria} selecionada com sucesso!")
 
     window.close()            
 
