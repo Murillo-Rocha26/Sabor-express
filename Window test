@@ -127,3 +127,12 @@ def cadastrar_categoria_produto():
     window.close()
 # Chama a função para cadastrar o restaurante ao iniciar o programa
     cadastrar_novo_restaurante()
+
+
+def main():
+    exibir_nome_do_programa()
+    cadastrar_novo_restaurante()
+
+
+if __name__ == '__main__':
+    main()
