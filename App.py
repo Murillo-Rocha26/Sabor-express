@@ -25,20 +25,23 @@ def exibir_programa():
     print("5. Sair\n")
 
 
-def Encerrando_programa():
-    os.system('cls')
-    print("Encerrando programa\n")
+def voltar_menu_principal():
+    input("\nDigite uma tecla para retornar ao menu principal: ")
+    main()   
 
 
 def opção_invalida():
     print("Opção inválida! Tente novamente.\n")
-    input("Digite uma tecla para voltar ao menu principal:")
-    main()
-
+    voltar_menu_principal()
+ 
+def exibir_subtitulo(texto):
+    os.system('cls')
+    print(texto)    
+    print()
 
 def cadastrar_novo_restaurante():
     os.system('cls')
-    print("Cadastre novos restaurantes\n")
+    exibir_subtitulo("Cadastre novos restaurantes\n")
     nome_do_restaurante = input("Nome do restaurante que deseja cadastrar-lo: ")
     if nome_do_restaurante in restaurantes:
         print("Este restaurante já foi cadastrado!\n")
@@ -51,8 +54,8 @@ def cadastrar_novo_restaurante():
     input("Cadastre o tipo de restaurante (ex: fast food, restaurante à la carte, self service): ")
     input("Descrição sobre o restaurante (como é o estilo de cozinha): ")
     input("Ponto de referência (Opcional): ")
-    input("Digite uma tecla para voltar ao menu principal: ")
-    main()
+    
+    voltar_menu_principal()
 
 
 def cadastrar_novo_produto():
@@ -61,31 +64,27 @@ def cadastrar_novo_produto():
     produto_cadastrado = input("Cadastre o produto do restaurante: ")
 
     print('Escolha uma categoria para seu produto:')
-    print('1. Entradas ')
-    print('2. Bebidas ')
-    print('3. Pratos principais ')
+    print('1. Entradas: ')
+    print('2. Bebidas: ')
+    print('3. Pratos principais: ')
     categoria = input('Digite o número da categoria: ')
 
-    categoria_dict = {
-        '1': 'Entradas',
-        '2': 'Bebidas',
-        '3': 'Pratos principais'
+    categoria = {
+        '1:' 'Entradas',
+        '2:' 'Bebidas',
+        '3:' 'Pratos principais'
     }
 
-    categoria_nome = categoria_dict.get(categoria)
+    categoria_nome = categoria.get(categoria)
     if categoria_nome:
         if categoria_nome not in produtos:
             produtos[categoria_nome] = []
-
-        if categoria_nome in produtos[categoria_nome]:
-            print("Este produto já está cadastrado na categoria!")
-        else:
-            produtos[categoria_nome].append(produto_cadastrado)
-            print(f"O {produto_cadastrado} foi cadastrado na categoria {categoria_nome} com sucesso!\n")
+        produtos[categoria_nome].append(produto_cadastrado)
+        print(f"O {produto_cadastrado} foi cadastrado na categoria {categoria_nome} com sucesso!\n")
     else:
         print("Opção inválida!\n")
-    input("Digite uma tecla para voltar ao menu principal: ")
-    main()
+
+    voltar_menu_principal()
 
 
 def ativar_restaurante():
@@ -97,8 +96,8 @@ def ativar_restaurante():
     else:
         restaurantes.append(ativar_restaurante)
         print(f"Este {ativar_restaurante} foi ativado com sucesso! ")
-    input("Digite uma tecla para voltar ao menu principal: ")
-    main()
+    
+    voltar_menu_principal()
 
 
 def desativar_restaurante():
@@ -121,8 +120,8 @@ def desativar_restaurante():
             print("Opção de restaurante inválida!\n")
     except ValueError:
         print("Opção inválida\n")
-    input("Digite uma tecla para voltar ao menu principal: ")
-    main()
+    
+    voltar_menu_principal()
 
 
 def escolher_opções():
@@ -145,6 +144,8 @@ def escolher_opções():
     except ValueError:
         opção_invalida()
 
+def Encerrando_programa():
+    exibir_subtitulo("Finalizando programa")
 
 def main():
     os.system('cls')
