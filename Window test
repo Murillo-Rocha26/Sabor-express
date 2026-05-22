@@ -125,6 +125,7 @@ def cadastrar_categoria_produto():
 def main():
     exibir_nome_do_programa()  # Exibe a popup com o nome do sistema
     cadastrar_novo_restaurante()  # Chama a função para cadastrar um novo restaurante
+    ativar_novo_restaurante()
 
 if __name__ == "__main__":
     main()  # Chama a função principal quando o programa inicia
