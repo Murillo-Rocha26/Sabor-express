@@ -36,7 +36,7 @@ def exibir_programa():
 
 # função para retornar ao menu principal utilizando qualquer tecla
 def voltar_menu_principal():
-    main()
+    input("\nPressione ENTER para voltar ao menu principal......")
 
 
 # opção inválida quando utiliza uma outra tecla tanto no menu/cadastro
@@ -79,7 +79,7 @@ def cadastrar_novo_restaurante():
     '''Sempre vai ser falso porque quando o restaurante será criado
     ele ainda deve ser ativado'''
 
-    if any(restaurante['nome'] == nome_do_restaurante for restaurante in restaurantes):
+    if any(r['nome'] == nome_do_restaurante for r in restaurantes):
         print("Este restaurante já foi cadastrado!\n")
 
     else:
@@ -160,7 +160,7 @@ def desativar_restaurante():
         if 1 <= restaurantes_ativo <= len(restaurantes):
             restaurante_nome = restaurantes(restaurantes_ativo - 1)
             print(f"""O restaurante {restaurante_nome}
-                  foi desativado no sistema.""")
+                    foi desativado no sistema.""")
         else:
             print("Opção de restaurante inválida!\n")
     except ValueError:
