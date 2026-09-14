@@ -5,7 +5,9 @@ from models.cardapio.prato import Prato
 
 restaurante_praca = Restaurante('praça', 'Gourmet')
 bebida_refrigerante = Bebida('Pepsi', 'R$7,00', 'Grande')
+bebida_refrigerante.aplicar_desconto()
 prato_macarrao = Prato('Macarronada', 'R$15,00', 'A melhor macarronada do Brasa!')
+prato_macarrao.aplicar_desconto()
 
 restaurante_praca.adicionar_no_cardapio(bebida_refrigerante)
 restaurante_praca.adicionar_no_cardapio(prato_macarrao)
